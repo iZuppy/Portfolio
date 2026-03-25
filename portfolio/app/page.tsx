@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { caseStudies } from "@/lib/case-studies";
 import CaseStudyCard from "@/components/CaseStudyCard";
@@ -15,40 +16,54 @@ export default function Home() {
     <>
       {/* ─── Hero ─── */}
       <section className="container-wide pt-20 pb-28">
-        <div className="max-w-[780px]">
+        <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-16">
+          <div className="max-w-[780px] flex-1">
+            <div className="mb-10 anim-fade-up">
+              <span className="inline-flex items-center gap-2 text-[11px] font-medium text-fg-2 border border-line rounded-full px-3 py-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" />
+                {t.pill[lang]}
+              </span>
+            </div>
 
-          <div className="mb-10 anim-fade-up">
-            <span className="inline-flex items-center gap-2 text-[11px] font-medium text-fg-2 border border-line rounded-full px-3 py-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" />
-              {t.pill[lang]}
-            </span>
+            <h1 className="heading-xl mb-7 anim-fade-up anim-delay-1">
+              <span className="text-fg">{t.h1a[lang]}</span>
+              <br />
+              <span className="text-accent">{t.h1b[lang]}</span>
+            </h1>
+
+            <p className="text-[17px] text-fg-2 leading-[1.65] max-w-[560px] mb-10 anim-fade-up anim-delay-2">
+              {t.bio[lang]}
+            </p>
+
+            <div className="flex items-center gap-5 anim-fade-up anim-delay-3">
+              <Link
+                href="/work"
+                className="inline-flex items-center gap-2 bg-accent text-black text-[13px] font-semibold px-4 py-2.5 rounded-lg hover:bg-accent-dim transition-colors duration-150"
+              >
+                {t.cta1[lang]}
+                <ArrowRight size={13} />
+              </Link>
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2 text-[13px] font-medium text-fg-2 hover:text-fg transition-colors duration-150"
+              >
+                {t.cta2[lang]}
+                <ArrowRight size={13} />
+              </Link>
+            </div>
           </div>
 
-          <h1 className="heading-xl mb-7 anim-fade-up anim-delay-1">
-            <span className="text-fg">{t.h1a[lang]}</span>
-            <br />
-            <span className="text-accent">{t.h1b[lang]}</span>
-          </h1>
-
-          <p className="text-[17px] text-fg-2 leading-[1.65] max-w-[560px] mb-10 anim-fade-up anim-delay-2">
-            {t.bio[lang]}
-          </p>
-
-          <div className="flex items-center gap-5 anim-fade-up anim-delay-3">
-            <Link
-              href="/work"
-              className="inline-flex items-center gap-2 bg-accent text-black text-[13px] font-semibold px-4 py-2.5 rounded-lg hover:bg-accent-dim transition-colors duration-150"
-            >
-              {t.cta1[lang]}
-              <ArrowRight size={13} />
-            </Link>
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 text-[13px] font-medium text-fg-2 hover:text-fg transition-colors duration-150"
-            >
-              {t.cta2[lang]}
-              <ArrowRight size={13} />
-            </Link>
+          <div className="flex-shrink-0 w-full lg:w-auto">
+            <div className="border border-line bg-surface p-3 rounded-3xl inline-block anim-fade-up anim-delay-1">
+              <Image
+                src="/profile.png"
+                alt="Luis Lapaix Profile"
+                width={320}
+                height={320}
+                className="w-full lg:w-[320px] h-auto rounded-2xl object-cover"
+                priority
+              />
+            </div>
           </div>
         </div>
 
@@ -96,9 +111,13 @@ export default function Home() {
               className="bg-bg p-8 lg:p-10 anim-fade-up"
               style={{ animationDelay: `${i * 80}ms` }}
             >
-              <p className="text-[11px] font-mono text-fg-4 mb-6 tracking-wider">{item.number}</p>
+              <p className="text-[11px] font-mono text-fg-4 mb-6 tracking-wider">
+                {item.number}
+              </p>
               <h3 className="heading-sm mb-3">{item.title[lang]}</h3>
-              <p className="text-[13px] text-fg-2 leading-relaxed">{item.body[lang]}</p>
+              <p className="text-[13px] text-fg-2 leading-relaxed">
+                {item.body[lang]}
+              </p>
             </div>
           ))}
         </div>
@@ -110,7 +129,9 @@ export default function Home() {
           <div className="max-w-lg">
             <p className="label mb-5">{t.ctaLabel[lang]}</p>
             <h2 className="heading-lg mb-4">{t.ctaHeading[lang]}</h2>
-            <p className="text-[14px] text-fg-2 leading-relaxed">{t.ctaBody[lang]}</p>
+            <p className="text-[14px] text-fg-2 leading-relaxed">
+              {t.ctaBody[lang]}
+            </p>
           </div>
           <div className="flex flex-col sm:flex-row md:flex-col gap-3 flex-shrink-0">
             <Link
